@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.deps-installed
+
+# macOS
+.DS_Store
+
+# Generated artifacts
+Markdown Converter.app/
+test/converted/
+test/themed/
+test/v11/
+.md-converter/
+
+# User config (don't commit personal settings)
+config.json
+
+# Assets built from source — keep icon.png, regenerate .icns per-user
+assets/.build-iconset.iconset/
+
+# Editor
+.vscode/
+.idea/
+*.swp

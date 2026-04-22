@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>Markdown Converter</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="app">
+
+  <header class="top">
+    <div class="title">
+      <h1>Markdown Converter</h1>
+      <p class="subtitle"><em>md</em> &middot; docx &middot; pdf &middot; xlsx &middot; html</p>
+    </div>
+
+    <div class="output-bar">
+      <span class="label">输出到</span>
+      <span id="output-path" class="path">—</span>
+      <select id="output-mode" title="输出位置策略">
+        <option value="sibling">源文件旁 ./converted/</option>
+        <option value="desktop">~/Desktop/Converted/</option>
+        <option value="ask">每次询问</option>
+      </select>
+      <button id="open-output" class="ghost" title="在 Finder 中打开">📁 打开</button>
+    </div>
+  </header>
+
+  <section class="dropzone" id="dropzone">
+    <div class="drop-inner">
+      <div class="drop-icon">⌃</div>
+      <p class="drop-hint">把 <strong>.md</strong> 文件拖到这里</p>
+      <p class="drop-sub">或 <button id="pick-btn" class="link">点击选择文件</button></p>
+      <div class="paste-row">
+        <input id="paste-input" type="text" placeholder="粘贴文件或文件夹路径（支持 ~ 和通配符 *.md）">
+        <button id="paste-add" class="ghost">加入</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="controls">
+    <div class="format-picker">
+      <span class="label">转换为</span>
+      <div class="fmt-group" role="radiogroup">
+        <label class="fmt"><input type="radio" name="fmt" value="docx" checked> <span>DOCX</span></label>
+        <label class="fmt"><input type="radio" name="fmt" value="pdf"> <span>PDF</span></label>
+        <label class="fmt"><input type="radio" name="fmt" value="xlsx"> <span>XLSX</span></label>
+        <label class="fmt"><input type="radio" name="fmt" value="html"> <span>HTML</span></label>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="sweep-btn" class="ghost" disabled>清理已完成</button>
+      <button id="clear-btn" class="ghost" disabled>清空</button>
+      <button id="convert-btn" class="primary" disabled>开始转换</button>
+    </div>
+  </section>
+
+  <section class="styling">
+    <label class="styling-item">
+      <span class="label">字体</span>
+      <select id="font-select"></select>
+    </label>
+    <label class="styling-item">
+      <span class="label">字号</span>
+      <select id="size-select"></select>
+    </label>
+    <label class="styling-item">
+      <span class="label">主要语言</span>
+      <select id="lang-select"></select>
+    </label>
+    <label class="styling-item">
+      <span class="label">配色</span>
+      <div id="color-swatches" class="swatches"></div>
+    </label>
+  </section>
+
+  <section class="preview-card" id="preview-card">
+    <div class="preview-label">样式预览</div>
+    <div class="preview-body">
+      <h2 class="preview-h">暮色与长廊 · Twilight Passage</h2>
+      <p class="preview-p">雨后的砖缝里渗出青草气息，the quiet hour before dusk 把影子拉得很长。</p>
+      <blockquote class="preview-q">Well-behaved women seldom make history. —— Laurel Ulrich</blockquote>
+      <p class="preview-code-wrap"><code class="preview-c">def hello(): return "你好"</code></p>
+    </div>
+  </section>
+
+  <div id="drag-warning" class="drag-warning hidden"></div>
+
+  <section class="queue-wrap">
+    <ul id="queue" class="queue"></ul>
+    <p id="empty-hint" class="empty-hint">队列为空。拖入 .md 文件开始。</p>
+  </section>
+
+  <footer class="status-bar">
+    <div id="progress" class="progress"><div class="progress-fill"></div></div>
+    <p id="summary" class="summary"></p>
+  </footer>
+
+</main>
+<script src="app.js"></script>
+</body>
+</html>
