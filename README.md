@@ -25,7 +25,7 @@
 brew install pandoc pango
 
 # 克隆 & 启动
-git clone https://github.com/carpediemzzsssww-cpu/markdown-converter.git
+git clone https://github.com/carpediemzzsssww-cpu/markdown--converter.git
 cd markdown-converter
 ./run.sh
 ```
